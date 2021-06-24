@@ -9,7 +9,7 @@ public class WeatherTest {
 
     @Test
     public void getTest() throws IOException {
-        System.out.println(weather.getMaxTemp());
+        System.out.println(weather.getWeather());
     }
 
 }
