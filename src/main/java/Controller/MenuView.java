@@ -1,0 +1,46 @@
+package Controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.Menu;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+
+public class MenuView {
+    private Scene scene;
+    private Parent root;
+    private Stage stage = new Stage();
+
+    @FXML
+    private Button task;
+    @FXML
+    private Button weather;
+    @FXML
+    private Button calculator;
+    @FXML
+    private MenuBar bar;
+    @FXML
+    private Menu logIn;
+    @FXML
+    private MenuItem user;
+
+    @FXML
+    public void login(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LoginView.fxml"));
+        Scene scene = new Scene(root, 400, 400);
+        stage.setTitle("Login");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+}

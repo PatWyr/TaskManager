@@ -3,17 +3,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.util.Objects;
 
 
 public class main extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-            Scene scene = new Scene(root, 1000, 800);
-            stage.setTitle("TaskManager");
-            stage.setScene(scene);
-            stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("MenuView.fxml"));
+        Scene scene = new Scene(root, 800, 800);
+        stage.setTitle("TaskManager");
+        stage.setScene(scene);
+        stage.show();
     }
 }
