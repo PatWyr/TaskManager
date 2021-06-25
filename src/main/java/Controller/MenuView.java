@@ -45,8 +45,10 @@ public class MenuView {
     public void calculatorOpen(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CalculatorView.fxml"));
         Scene scene = new Scene(root, 600, 600);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
         stage.setTitle("Calculator");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
