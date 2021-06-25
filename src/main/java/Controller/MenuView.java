@@ -12,11 +12,10 @@ import javafx.scene.control.Menu;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class MenuView {
-    private Scene scene;
-    private Parent root;
     private Stage stage = new Stage();
 
     @FXML
@@ -34,7 +33,7 @@ public class MenuView {
 
     @FXML
     public void login(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("LoginView.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("LoginView.fxml")));
         Scene scene = new Scene(root, 400, 400);
         stage.setTitle("Login");
         stage.setScene(scene);
@@ -43,7 +42,7 @@ public class MenuView {
 
     @FXML
     public void calculatorOpen(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("CalculatorView.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("CalculatorView.fxml")));
         Scene scene = new Scene(root, 600, 600);
         scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
         stage.setTitle("Calculator");
@@ -52,6 +51,15 @@ public class MenuView {
         stage.show();
     }
 
+    @FXML
+    public void addTask(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml")));
+        Scene scene = new Scene(root, 600, 600);
+        stage.setTitle("Add Task");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 
 
 }

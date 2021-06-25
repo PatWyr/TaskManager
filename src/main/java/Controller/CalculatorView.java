@@ -38,6 +38,8 @@ public class CalculatorView {
     @FXML
     Button nine;
     @FXML
+    Button zero;
+    @FXML
     Button plus;
     @FXML
     Button minus;
