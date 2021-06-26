@@ -5,18 +5,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Menu;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+import lombok.Getter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Objects;
 
-
+@Getter
 public class MenuView {
-    private Stage stage = new Stage();
+    private static final MenuView menuView = new MenuView();
+
+    public MenuView() {
+    }
+
+    public static MenuView getInstance() {
+        return menuView;
+    }
+
+    private final Stage stage = new Stage();
 
     @FXML
     private Button task;
@@ -30,6 +37,18 @@ public class MenuView {
     private Menu logIn;
     @FXML
     private MenuItem user;
+    @FXML
+    private static ListView listView;
+
+    @FXML
+    public void initialize() {
+    }
+
+    public static void addItem(String title,String description,Date date, String category) {
+        listView.getItems().add(title + " " + description + " " + date.toString() + " " + category);
+    }
+
+
 
     @FXML
     public void login(ActionEvent actionEvent) throws IOException {

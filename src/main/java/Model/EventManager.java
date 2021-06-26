@@ -2,9 +2,18 @@ package Model;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
-@NoArgsConstructor
+
 public class EventManager implements EventActions<Event> {
-    private List<Event> eventList = new ArrayList<>();
+
+    private static final EventManager eventManager = new EventManager();
+    private EventManager() {
+    }
+
+    public static EventManager getInstance() {
+        return eventManager;
+    }
+
+    private static final List<Event> eventList = new ArrayList<>();
 
     @Override
     public void addEvent(Event obj) {

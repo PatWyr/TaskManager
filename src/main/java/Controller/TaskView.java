@@ -1,7 +1,47 @@
 package Controller;
+import Model.EventManager;
+import Model.Task;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TaskView {
+    private final Logger log = Logger.getLogger(getClass().getName());
+    @FXML
+    TextArea description;
+    @FXML
+    TextArea title;
+    @FXML
+    DatePicker date;
+    @FXML
+    ComboBox category;
+    @FXML
+    Button add;
 
+    EventManager eventManager = EventManager.getInstance();
+
+    @FXML
+    public void addTask() {
+        LocalDate localDate = date.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date date = Date.from(instant);
+        try {
+            eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
+            MenuView.addItem(title.getText(),description.getText(),date,(String) category.getSelectionModel().getSelectedItem());
+        } catch (NullPointerException e) {
+            e.getMessage();
+        }
+        log.log(Level.INFO,"Task added");
+        add.getScene().getWindow().hide();
+    }
 
 
 

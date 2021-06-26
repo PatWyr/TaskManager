@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CalculatorView {
-    private Stage stage = new Stage();
+    private final Stage stage = new Stage();
     protected final Logger log = Logger.getLogger(getClass().getName());
     @FXML
     Button returnButton;
@@ -72,7 +72,7 @@ public class CalculatorView {
     public void add(ActionEvent actionEvent) {
         tmp = Integer.parseInt(number);
         all += " + ";
-        screen.setText(String.valueOf(all));
+        screen.setText(all);
         result += tmp;
         number = "";
         sign = "+";
@@ -83,7 +83,7 @@ public class CalculatorView {
         size+=1;
         tmp = Integer.parseInt(number);
         all += " - ";
-        screen.setText(String.valueOf(all));
+        screen.setText(all);
         if(size == 1) {
             result += tmp;
         } else {
@@ -98,7 +98,7 @@ public class CalculatorView {
         size += 1;
         tmp = Integer.parseInt(number);
         all += " * ";
-        screen.setText(String.valueOf(all));
+        screen.setText(all);
         if(size == 1) {
             result += tmp;
         } else {
@@ -113,7 +113,7 @@ public class CalculatorView {
         size += 1;
         tmp = Integer.parseInt(number);
         all += " / ";
-        screen.setText(String.valueOf(all));
+        screen.setText(all);
         if(size == 1) {
             result += tmp;
         } else {
@@ -146,7 +146,7 @@ public class CalculatorView {
             tmp = Integer.parseInt(number);
             result /= tmp;
         }
-        screen.setText("= " + String.valueOf(result));
+        screen.setText("= " + result);
         result = 0;
         sign = "";
     }
