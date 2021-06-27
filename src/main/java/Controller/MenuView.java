@@ -84,6 +84,7 @@ public class MenuView {
         //loader.load();
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
         stage.setTitle("Add Task");
         stage.setScene(scene);
         stage.setResizable(false);
