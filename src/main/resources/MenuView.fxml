@@ -30,7 +30,6 @@
             <ListView fx:id="listView" layoutX="62.0" layoutY="84.0" prefHeight="273.0" prefWidth="681.0" />
             <Button fx:id="weather" layoutX="62.0" layoutY="708.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="189.0" text="Weather" />
             <Button fx:id="calculator" layoutX="554.0" layoutY="708.0" mnemonicParsing="false" onAction="#calculatorOpen" prefHeight="25.0" prefWidth="189.0" text="Calculator" />
-            <Button fx:id="test" layoutX="105.0" layoutY="388.0" mnemonicParsing="false" onAction="#addItem" text="Button" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

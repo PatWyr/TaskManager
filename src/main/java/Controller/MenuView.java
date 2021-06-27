@@ -32,8 +32,6 @@ public class MenuView {
     @FXML
     private Button calculator;
     @FXML
-    private Button test;
-    @FXML
     private MenuBar bar;
     @FXML
     private Menu logIn;
@@ -51,14 +49,10 @@ public class MenuView {
         listView.setItems(items);
     }
 
-
     @FXML
-    public void addItem() {
-        listView.getItems().add(eventManager.getEventList().get(0).getTitle()+" "+eventManager.getEventList().get(0).getDescription());
-        System.out.println(listView.getItems());
+    public void addItem(String title, String description, String date, String category) {
+        listView.getItems().add(title + " " + description + " " + date.toString() + " " + category);
     }
-
-
 
     @FXML
     public void login(ActionEvent actionEvent) throws IOException {

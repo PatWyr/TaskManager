@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
+
+import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -34,11 +36,12 @@ public class TaskView {
     }
 
     @FXML
-    public void addTask() {
+    public void addTask() throws IOException {
         LocalDate localDate = date.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
         eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
+        menuView.addItem(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
         log.log(Level.INFO,"Task added");
         add.getScene().getWindow().hide();
     }
