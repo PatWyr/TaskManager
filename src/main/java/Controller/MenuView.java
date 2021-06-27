@@ -1,11 +1,15 @@
 package Controller;
 
+import Model.EventManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldListCell;
 import javafx.stage.Stage;
 import lombok.Getter;
 import java.io.IOException;
@@ -14,13 +18,9 @@ import java.util.Objects;
 
 @Getter
 public class MenuView {
-    private static final MenuView menuView = new MenuView();
+
 
     public MenuView() {
-    }
-
-    public static MenuView getInstance() {
-        return menuView;
     }
 
     private final Stage stage = new Stage();
@@ -32,20 +32,30 @@ public class MenuView {
     @FXML
     private Button calculator;
     @FXML
+    private Button test;
+    @FXML
     private MenuBar bar;
     @FXML
     private Menu logIn;
     @FXML
     private MenuItem user;
+
     @FXML
-    private static ListView listView;
+    private ListView listView;
+
+    private final ObservableList<String> items = FXCollections.observableArrayList();
+    private EventManager eventManager = EventManager.getInstance();
 
     @FXML
     public void initialize() {
+        listView.setItems(items);
     }
 
-    public static void addItem(String title,String description,Date date, String category) {
-        listView.getItems().add(title + " " + description + " " + date.toString() + " " + category);
+
+    @FXML
+    public void addItem() {
+        listView.getItems().add(eventManager.getEventList().get(0).getTitle()+" "+eventManager.getEventList().get(0).getDescription());
+        System.out.println(listView.getItems());
     }
 
 
@@ -72,7 +82,13 @@ public class MenuView {
 
     @FXML
     public void addTask(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml")));
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml")));
+        FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml"))));
+        loader.setControllerFactory(c -> {
+            return new TaskView(this);
+        });
+        //loader.load();
+        Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
         stage.setTitle("Add Task");
         stage.setScene(scene);

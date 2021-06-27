@@ -25,20 +25,20 @@ public class TaskView {
     ComboBox category;
     @FXML
     Button add;
-
     EventManager eventManager = EventManager.getInstance();
+
+    private final MenuView menuView;
+
+    public TaskView(MenuView menuView) {
+        this.menuView = menuView;
+    }
 
     @FXML
     public void addTask() {
         LocalDate localDate = date.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
-        try {
-            eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
-            MenuView.addItem(title.getText(),description.getText(),date,(String) category.getSelectionModel().getSelectedItem());
-        } catch (NullPointerException e) {
-            e.getMessage();
-        }
+        eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
         log.log(Level.INFO,"Task added");
         add.getScene().getWindow().hide();
     }

@@ -1,8 +1,10 @@
 package Model;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class EventManager implements EventActions<Event> {
 
     private static final EventManager eventManager = new EventManager();
@@ -13,7 +15,7 @@ public class EventManager implements EventActions<Event> {
         return eventManager;
     }
 
-    private static final List<Event> eventList = new ArrayList<>();
+    private List<Event> eventList = new ArrayList<>();
 
     @Override
     public void addEvent(Event obj) {
@@ -25,6 +27,10 @@ public class EventManager implements EventActions<Event> {
         eventList.remove(obj);
     }
 
+    public List<Event> getEventList() {
+        return eventList;
+    }
+
     @Override
     public void modifyEvent(Event obj) {
 
@@ -34,4 +40,6 @@ public class EventManager implements EventActions<Event> {
     public Event getEvent() {
         return null;
     }
+
+
 }
