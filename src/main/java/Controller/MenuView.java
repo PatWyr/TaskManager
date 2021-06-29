@@ -42,7 +42,7 @@ public class MenuView {
     private ListView listView;
 
     private final ObservableList<String> items = FXCollections.observableArrayList();
-    private EventManager eventManager = EventManager.getInstance();
+    private final EventManager eventManager = EventManager.getInstance();
 
     @FXML
     public void initialize() {
@@ -51,7 +51,7 @@ public class MenuView {
 
     @FXML
     public void addItem(String title, String description, String date, String category) {
-        listView.getItems().add(title + " " + description + " " + date.toString() + " " + category);
+        listView.getItems().add(title + " " + description + " " + date + " " + category);
     }
 
     @FXML
@@ -76,16 +76,25 @@ public class MenuView {
 
     @FXML
     public void addTask(ActionEvent actionEvent) throws IOException {
-        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml")));
         FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml"))));
         loader.setControllerFactory(c -> {
             return new TaskView(this);
         });
-        //loader.load();
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
         scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
         stage.setTitle("Add Task");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    public void weatherOpen() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("WeatherView.fxml")));
+        Scene scene = new Scene(root, 600, 600);
+       // scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
+        stage.setTitle("Weather");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

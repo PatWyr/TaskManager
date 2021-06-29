@@ -15,7 +15,7 @@ public class EventManager implements EventActions<Event> {
         return eventManager;
     }
 
-    private List<Event> eventList = new ArrayList<>();
+    private final List<Event> eventList = new ArrayList<>();
 
     @Override
     public void addEvent(Event obj) {

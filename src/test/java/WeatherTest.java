@@ -10,6 +10,7 @@ public class WeatherTest {
     @Test
     public void getTest() throws IOException {
         System.out.println(weather.getWeather());
+
     }
 
 }
