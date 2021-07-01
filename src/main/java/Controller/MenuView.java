@@ -37,7 +37,8 @@ public class MenuView {
     private Menu logIn;
     @FXML
     private MenuItem user;
-
+    @FXML
+    private Button meeting;
     @FXML
     private ListView listView;
 
@@ -95,6 +96,21 @@ public class MenuView {
         Scene scene = new Scene(root, 600, 600);
        // scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
         stage.setTitle("Weather");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    public void addMeeting(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("MeetingView.fxml"))));
+        loader.setControllerFactory(c -> {
+            return new MeetingView(this);
+        });
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 600, 600);
+        //scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
+        stage.setTitle("Add Meeting");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

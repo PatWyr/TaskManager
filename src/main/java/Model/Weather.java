@@ -42,8 +42,11 @@ public class Weather {
     }
 
     public void getValue() throws IOException, ParseException {
+        for (int i = 0; i < getArray().length(); ++i) {
+            JSONObject rec = getArray().getJSONObject(i);
+            System.out.println(rec.getJSONObject("Value"));
 
-
+        }
     }
 
 

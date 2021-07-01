@@ -1,4 +1,5 @@
 import Model.Weather;
+import net.minidev.json.parser.ParseException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -8,8 +9,8 @@ public class WeatherTest {
 
 
     @Test
-    public void getTest() throws IOException {
-        System.out.println(weather.getWeather());
+    public void getTest() throws IOException, ParseException {
+        weather.getValue();
 
     }
 
