@@ -2,7 +2,7 @@ package Controller;
 
 public class MeetingView {
 
-    private MenuView menuView;
+    private final MenuView menuView;
 
     public MeetingView(MenuView menuView) {
         this.menuView = menuView;

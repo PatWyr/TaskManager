@@ -1,4 +1,5 @@
 package Controller;
+import Model.DAO;
 import Model.EventManager;
 import Model.Task;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,18 +32,20 @@ public class TaskView {
     EventManager eventManager = EventManager.getInstance();
 
     private final MenuView menuView;
+    private final DAO dao = new DAO();
 
-    public TaskView(MenuView menuView) {
+    public TaskView(MenuView menuView) throws SQLException {
         this.menuView = menuView;
     }
 
     @FXML
-    public void addTask() throws IOException {
+    public void addTask() throws IOException, SQLException {
         LocalDate localDate = date.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
         eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
         menuView.addItem(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
+        dao.addTask(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
         log.log(Level.INFO,"Task added");
         add.getScene().getWindow().hide();
     }

@@ -13,6 +13,7 @@ import javafx.scene.control.cell.TextFieldListCell;
 import javafx.stage.Stage;
 import lombok.Getter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -79,7 +80,12 @@ public class MenuView {
     public void addTask(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("TaskView.fxml"))));
         loader.setControllerFactory(c -> {
-            return new TaskView(this);
+            try {
+                return new TaskView(this);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return null;
         });
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
