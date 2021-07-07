@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuView">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="task" layoutX="308.0" layoutY="388.0" mnemonicParsing="false" onAction="#addTask" prefHeight="25.0" prefWidth="189.0" text="Add task" />
+            <MenuBar fx:id="bar" layoutY="2.0" prefHeight="25.0" prefWidth="804.0">
+              <menus>
+                <Menu fx:id="logIn" mnemonicParsing="false" text="Log in">
+                  <items>
+                    <MenuItem fx:id="user" mnemonicParsing="false" onAction="#login" text="User" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Options">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ListView fx:id="listView" layoutX="62.0" layoutY="84.0" prefHeight="273.0" prefWidth="681.0" />
+            <Button fx:id="weather" layoutX="62.0" layoutY="708.0" mnemonicParsing="false" onAction="#weatherOpen" prefHeight="25.0" prefWidth="189.0" text="Weather" />
+            <Button fx:id="calculator" layoutX="554.0" layoutY="708.0" mnemonicParsing="false" onAction="#calculatorOpen" prefHeight="25.0" prefWidth="189.0" text="Calculator" />
+            <Button fx:id="meeting" layoutX="308.0" layoutY="428.0" mnemonicParsing="false" onAction="#addMeeting" prefHeight="25.0" prefWidth="189.0" text="Add meeting" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.EmailSender;
 import Model.EventManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,8 @@ import java.util.Objects;
 public class MenuView {
 
 
-    public MenuView() {
+    public MenuView() throws IOException {
+
     }
 
     private final Stage stage = new Stage();
@@ -45,10 +47,12 @@ public class MenuView {
 
     private final ObservableList<String> items = FXCollections.observableArrayList();
     private final EventManager eventManager = EventManager.getInstance();
+    private EmailSender emailSender = new EmailSender();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         listView.setItems(items);
+        //emailSender.start();
     }
 
     @FXML
@@ -121,6 +125,8 @@ public class MenuView {
         stage.setResizable(false);
         stage.show();
     }
+
+
 
 
 }

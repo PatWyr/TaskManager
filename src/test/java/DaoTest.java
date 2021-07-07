@@ -2,6 +2,7 @@ import Model.DAO;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import static org.junit.Assert.*;
 
 public class DaoTest {
     private DAO dao;
@@ -21,5 +22,12 @@ public class DaoTest {
     public void deleteTest() throws SQLException {
         dao = new DAO();
         dao.clearAll();
+    }
+
+    @Test
+    public void findTest() throws SQLException {
+        dao = new DAO();
+        assertEquals(true,dao.findUser("TEST","TEST"));
+        assertEquals(false,dao.findUser("TES2T","2TEST"));
     }
 }

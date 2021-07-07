@@ -50,6 +50,22 @@ public class DAO {
         pst = conn.prepareStatement(sql);
         pst.executeUpdate();
     }
+    
+    public boolean findUser(String passedLogin,String passedPassword) throws SQLException {
+         String ask ="SELECT login,password FROM Persons";
+         Statement pst1 = conn.createStatement();
+         ResultSet set = pst1.executeQuery(ask);
+         String login = "";
+         String pass = "";
+         while (set.next()) {                  
+             login = set.getString(1);
+             pass = set.getString(2);
+             if(login.equals(passedLogin) && pass.equals(passedPassword)) {
+                 return true;
+             }
+         }
+         return false;
+    }
 
 
 

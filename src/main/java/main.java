@@ -4,6 +4,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class main extends Application {
 
@@ -13,10 +15,10 @@ public class main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MenuView.fxml"));
-        Scene scene = new Scene(root, 800, 800);
-        stage.setTitle("TaskManager");
-        stage.setScene(scene);
-        stage.show();
+          Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("LoginView.fxml")));
+          Scene scene = new Scene(root, 400, 400);
+          stage.setTitle("Login");
+          stage.setScene(scene);
+          stage.show();
     }
 }
