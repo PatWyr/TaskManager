@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DAO;
+import Model.PopUp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -16,8 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginView {
+
     protected final Logger log = Logger.getLogger(getClass().getName());
     private Stage stage = new Stage();
+    private int errors = 0;
+    private DAO dao = new DAO();
+    private PopUp popUp = new PopUp();
+
     @FXML
     TextArea login;
     @FXML
@@ -25,7 +30,6 @@ public class LoginView {
     @FXML
     Button loginButton;
 
-    private DAO dao = new DAO();
 
     public LoginView() throws SQLException {
     }
@@ -45,6 +49,12 @@ public class LoginView {
             stage.setTitle("Menu");
             stage.setScene(scene);
             stage.show();
+        } else {
+            errors++;
+            if(errors == 3) {
+                popUp.error();
+                errors = 0;
+            }
         }
 
     }
