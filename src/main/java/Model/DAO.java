@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DAO {
     private final String url = "jdbc:postgresql://localhost/TaskManager?user=postgres&password=123";
-    private Connection conn;
+    private final Connection conn;
     private String sql;
     private PreparedStatement pst;
     private static  DAO dao;
@@ -17,7 +17,6 @@ public class DAO {
         return dao;
     }
 
-
     private DAO() throws SQLException {
         conn = DriverManager.getConnection(url);
         if (conn != null) {
@@ -28,11 +27,6 @@ public class DAO {
             System.out.println("Product name: " + dm.getDatabaseProductName());
             System.out.println("Product version: " + dm.getDatabaseProductVersion());
         }
-    }
-
-    public void prepareDatabase() throws SQLException {
-        //TODO
-        //add if not exist
     }
 
     public void addTask(String title,String Description,String Date,String Type) throws SQLException {
@@ -94,6 +88,18 @@ public class DAO {
         pst.setString(5,password);
         pst.setString(6,email);
         pst.executeUpdate();
+    }
+
+    public boolean findLogin(String login) throws SQLException {
+        String ask ="SELECT login FROM Persons";
+        Statement pst1 = conn.createStatement();
+        ResultSet set = pst1.executeQuery(ask);
+        while (set.next()) {
+            if(set.getString(1) == login) {
+                return false;
+            }
+        }
+        return true;
     }
 
 

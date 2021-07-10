@@ -18,10 +18,10 @@ import java.util.logging.Logger;
 public class LoginView {
 
     protected final Logger log = Logger.getLogger(getClass().getName());
-    private Stage stage = new Stage();
+    private final Stage stage = new Stage();
     private int errors = 0;
-    private DAO dao = DAO.getInstance();
-    private PopUp popUp = new PopUp();
+    private final DAO dao = DAO.getInstance();
+    private final PopUp popUp = new PopUp();
 
     @FXML
     TextArea login;

@@ -47,7 +47,7 @@ public class RegisterView {
         boolean passwordTest = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
                 .matcher(password.getText()).matches();
         //boolean loginTest = Pattern.compile(".{5,}").matcher(login.getText()).matches();
-        if( passwordTest && emailTest) {
+        if( passwordTest && emailTest && dao.findLogin(login.getText())) {
             log.log(Level.INFO,"All correct");
             dao.addUser(firstName.getText(),lastName.getText(),login.getText(),password.getText(),email.getText());
             register.getScene().getWindow().hide();
@@ -56,6 +56,8 @@ public class RegisterView {
         }
 
     }
+
+
 
 
 

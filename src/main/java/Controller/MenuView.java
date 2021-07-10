@@ -47,7 +47,7 @@ public class MenuView {
 
     private final ObservableList<String> items = FXCollections.observableArrayList();
     private final EventManager eventManager = EventManager.getInstance();
-    private EmailSender emailSender = new EmailSender();
+    private final EmailSender emailSender = new EmailSender();
 
     @FXML
     public void initialize() throws IOException {
