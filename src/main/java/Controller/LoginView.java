@@ -65,7 +65,7 @@ public class LoginView {
     public void registerNewAccount() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("RegisterView.fxml")));
         Scene scene = new Scene(root, 600, 600);
-       // scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("RegisterCSS.css").toExternalForm());
         stage.setTitle("Register");
         stage.setScene(scene);
         stage.setResizable(false);

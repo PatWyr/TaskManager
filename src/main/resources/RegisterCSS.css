@@ -1,0 +1,34 @@
+.text-area .content  {
+    -fx-background-color: black ;
+}
+.text-area   {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.password-field  {
+    -fx-background-color: black ;
+    -fx-text-fill: white;
+}
+
+.button{
+    -fx-display:inline-block;
+    -fx-padding:0.3em 1.2em;
+    -fx-margin:0 0.3em 0.3em 0;
+    -fx-border-radius:2em;
+    -fx-box-sizing: border-box;
+    -fx-text-decoration:none;
+    -fx-font-family:'Roboto',sans-serif;
+    -fx-color:black;
+    -fx-background-color:black;
+    -fx-text-align:center;
+    -fx-transition: all 0.2s;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.button:hover{
+    -fx-background-color:#fc9708;
+}
+
