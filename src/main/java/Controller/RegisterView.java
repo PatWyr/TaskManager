@@ -26,9 +26,18 @@ public class RegisterView {
     Button register;
 
 
+
+
     public void registerUser() {
         log.log(Level.INFO,"Registering new User");
-        boolean emailTest=Pattern.compile(".s").matcher("as").matches();
+        boolean emailTest = Pattern.compile("[a-zA-Z0-9]{5,15}[@]{1}[a-zA-Z0-9]{2,8}.com").matcher(email.getText()).matches();
+        boolean passwordTest = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}").matcher(password.getText()).matches();
+        boolean loginTest = Pattern.compile(".{5,}").matcher(login.getText()).matches();
+        if( passwordTest && emailTest && loginTest) {
+            log.log(Level.INFO,"All correct");
+        } else {
+            log.log(Level.INFO,"Not all correct");
+        }
 
     }
 
