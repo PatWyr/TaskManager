@@ -7,9 +7,18 @@ public class DAO {
     private Connection conn;
     private String sql;
     private PreparedStatement pst;
+    private static  DAO dao;
 
 
-    public DAO() throws SQLException {
+    public static DAO getInstance() throws SQLException {
+        if(dao == null) {
+            dao = new DAO();
+        }
+        return dao;
+    }
+
+
+    private DAO() throws SQLException {
         conn = DriverManager.getConnection(url);
         if (conn != null) {
             DatabaseMetaData dm = conn.getMetaData();
@@ -65,6 +74,26 @@ public class DAO {
              }
          }
          return false;
+    }
+
+    public void addUser(String firstName,String lastName,String login,String password,String email) throws SQLException {
+        String ask ="SELECT MAX(id) FROM Persons";
+        Statement pst1 = conn.createStatement();
+        ResultSet set = pst1.executeQuery(ask);
+        int data = 0;
+        while (set.next()) {
+            data = set.getInt(1);
+        }
+        sql = "INSERT INTO Persons (id,name,surname,login,password,email)"
+                +"Values (?,?,?,?,?,?)";
+        pst = conn.prepareStatement(sql);
+        pst.setInt(1,data+1);
+        pst.setString(2,firstName);
+        pst.setString(3,lastName);
+        pst.setString(4,login);
+        pst.setString(5,password);
+        pst.setString(6,email);
+        pst.executeUpdate();
     }
 
 

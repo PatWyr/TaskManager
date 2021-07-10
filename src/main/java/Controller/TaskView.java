@@ -32,7 +32,7 @@ public class TaskView {
     EventManager eventManager = EventManager.getInstance();
 
     private final MenuView menuView;
-    private final DAO dao = new DAO();
+    private final DAO dao = DAO.getInstance();
 
     public TaskView(MenuView menuView) throws SQLException {
         this.menuView = menuView;

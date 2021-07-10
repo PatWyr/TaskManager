@@ -20,7 +20,7 @@ public class LoginView {
     protected final Logger log = Logger.getLogger(getClass().getName());
     private Stage stage = new Stage();
     private int errors = 0;
-    private DAO dao = new DAO();
+    private DAO dao = DAO.getInstance();
     private PopUp popUp = new PopUp();
 
     @FXML
