@@ -1,14 +1,14 @@
 .text-area .content  {
-    -fx-background-color: black ;
+    -fx-background-color: #232229 ;
 }
 .text-area   {
-    -fx-text-fill: white;
+    -fx-text-fill: #f5e6bf;
     -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
 
 .password-field  {
-    -fx-background-color: black ;
+    -fx-background-color: #232229 ;
     -fx-text-fill: white;
 }
 
@@ -20,8 +20,8 @@
     -fx-box-sizing: border-box;
     -fx-text-decoration:none;
     -fx-font-family:'Roboto',sans-serif;
-    -fx-color:black;
-    -fx-background-color:black;
+    -fx-color:#232229;
+    -fx-background-color:#232229;
     -fx-text-align:center;
     -fx-transition: all 0.2s;
     -fx-text-fill: white;
