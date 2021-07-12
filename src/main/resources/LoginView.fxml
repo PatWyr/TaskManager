@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginView">
    <children>
-      <AnchorPane layoutX="-2.0" prefHeight="400.0" prefWidth="400.0">
+      <AnchorPane layoutX="-2.0" prefHeight="400.0" prefWidth="406.0" style="-fx-background-color: #fac67d;">
          <children>
             <Button fx:id="loginButton" layoutX="106.0" layoutY="292.0" mnemonicParsing="false" onAction="#logInSystem" prefHeight="25.0" prefWidth="189.0" text="Login" />
             <TextArea fx:id="login" layoutX="55.0" layoutY="122.0" prefHeight="32.0" prefWidth="291.0" promptText="Login" wrapText="true">
@@ -19,12 +19,12 @@
             </TextArea>
             <Text layoutX="175.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="53.13671875">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Text layoutX="157.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="89.13671875">
+            <Text layoutX="152.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="96.13671875">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Text>
             <Button fx:id="register" layoutX="107.0" layoutY="340.0" mnemonicParsing="false" onAction="#registerNewAccount" prefHeight="25.0" prefWidth="189.0" text="Register" />
