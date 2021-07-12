@@ -2,6 +2,9 @@ package Controller;
 
 import Model.DAO;
 import Model.PopUp;
+import Model.User;
+import Repository.HibernateUserRepository;
+import Repository.UserRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +25,8 @@ public class LoginView {
     private int errors = 0;
     private final DAO dao = DAO.getInstance();
     private final PopUp popUp = new PopUp();
+    private final UserRepository repository = new HibernateUserRepository();
+    private User user;
 
     @FXML
     TextArea login;
@@ -41,10 +46,11 @@ public class LoginView {
         log.log(Level.INFO, "Logowanie");
         String tmpLogin = login.getText();
         String tmpPass = password.getText();
-        System.out.println("Login: " + tmpLogin);
-        System.out.println("Password: " + tmpPass);
-        dao.findUser(tmpLogin,tmpPass);
-        if(dao.findUser(tmpLogin,tmpPass)){
+        //System.out.println("Login: " + tmpLogin);
+        //System.out.println("Password: " + tmpPass);
+        //dao.findUser(tmpLogin,tmpPass);
+        user = repository.findUser(tmpLogin);
+        if(user.getPassword().equals(tmpPass)){
             loginButton.getScene().getWindow().hide();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MenuView.fxml")));
             Scene scene = new Scene(root, 800, 800);
