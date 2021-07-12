@@ -2,21 +2,17 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CalculatorView {
-    private final Stage stage = new Stage();
     protected final Logger log = Logger.getLogger(getClass().getName());
+    private final Stage stage = new Stage();
     @FXML
     Button returnButton;
     @FXML
@@ -62,9 +58,9 @@ public class CalculatorView {
 
     @FXML
     public void calculate(ActionEvent actionEvent) {
-        number += ((Button)actionEvent.getSource()).getText();
-        all += ((Button)actionEvent.getSource()).getText();
-        log.log(Level.INFO,number);
+        number += ((Button) actionEvent.getSource()).getText();
+        all += ((Button) actionEvent.getSource()).getText();
+        log.log(Level.INFO, number);
         screen.setText(String.valueOf(all));
     }
 
@@ -80,11 +76,11 @@ public class CalculatorView {
 
     @FXML
     public void subtraction() {
-        size+=1;
+        size += 1;
         tmp = Integer.parseInt(number);
         all += " - ";
         screen.setText(all);
-        if(size == 1) {
+        if (size == 1) {
             result += tmp;
         } else {
             result -= tmp;
@@ -99,7 +95,7 @@ public class CalculatorView {
         tmp = Integer.parseInt(number);
         all += " * ";
         screen.setText(all);
-        if(size == 1) {
+        if (size == 1) {
             result += tmp;
         } else {
             result *= tmp;
@@ -114,12 +110,12 @@ public class CalculatorView {
         tmp = Integer.parseInt(number);
         all += " / ";
         screen.setText(all);
-        if(size == 1) {
+        if (size == 1) {
             result += tmp;
         } else {
             try {
                 result /= tmp;
-            } catch (ArithmeticException e){
+            } catch (ArithmeticException e) {
                 e.getStackTrace();
             } finally {
                 screen.setText("Err");
@@ -130,19 +126,18 @@ public class CalculatorView {
     }
 
 
-
     @FXML
     public void sum(ActionEvent actionEvent) {
-        if(sign.contains("+")){
+        if (sign.contains("+")) {
             tmp = Integer.parseInt(number);
             result += tmp;
-        } else if(sign.contains("-")){
+        } else if (sign.contains("-")) {
             tmp = Integer.parseInt(number);
             result -= tmp;
-        } else if(sign.contains("*")){
+        } else if (sign.contains("*")) {
             tmp = Integer.parseInt(number);
             result *= tmp;
-        } else if(sign.contains("/")){
+        } else if (sign.contains("/")) {
             tmp = Integer.parseInt(number);
             result /= tmp;
         }
@@ -173,8 +168,6 @@ public class CalculatorView {
     public void returnToMenu(ActionEvent actionEvent) throws IOException {
         returnButton.getScene().getWindow().hide();
     }
-
-
 
 
 }

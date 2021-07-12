@@ -13,12 +13,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+@Getter
+@EqualsAndHashCode
+@Setter
+@ToString
 public class LoginView {
 
     protected final Logger log = Logger.getLogger(getClass().getName());
@@ -42,6 +51,8 @@ public class LoginView {
     public LoginView() throws SQLException {
     }
 
+
+
     @FXML
     public void logInSystem() throws SQLException, IOException {
         log.log(Level.INFO, "Logowanie");
@@ -53,7 +64,16 @@ public class LoginView {
         user = repository.findUser(tmpLogin);
         if(user.getPassword().equals(tmpPass)){
             loginButton.getScene().getWindow().hide();
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("MenuView.fxml")));
+            FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("MenuView.fxml"))));
+            loader.setControllerFactory(c -> {
+                try {
+                    return new MenuView(this);
+                } catch (IOException throwables) {
+                    throwables.printStackTrace();
+                }
+                return null;
+            });
+            Parent root = loader.load();
             Scene scene = new Scene(root, 800, 800);
             stage.setTitle("Menu");
             stage.setScene(scene);

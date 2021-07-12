@@ -2,6 +2,7 @@ package Controller;
 
 import Model.EmailSender;
 import Model.EventManager;
+import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,8 +23,11 @@ import java.util.Objects;
 public class MenuView {
 
 
-    public MenuView() throws IOException {
+   public MenuView() throws IOException {
 
+    }
+    public MenuView(LoginView loginView) throws IOException {
+    this.loginView = loginView;
     }
 
     private final Stage stage = new Stage();
@@ -48,11 +52,17 @@ public class MenuView {
     private final ObservableList<String> items = FXCollections.observableArrayList();
     private final EventManager eventManager = EventManager.getInstance();
     private final EmailSender emailSender = new EmailSender();
+    private LoginView loginView;
+    private User userInMenu;
+
+
+
 
     @FXML
     public void initialize() throws IOException {
         listView.setItems(items);
         //emailSender.start();
+        userInMenu = loginView.getUser();
     }
 
     @FXML
