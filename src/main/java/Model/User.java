@@ -32,4 +32,8 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
+    public int getUser_id() {
+        return user_id;
+    }
 }

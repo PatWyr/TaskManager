@@ -48,6 +48,7 @@ public class TaskView {
         LocalDate localDate = date.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
+        System.out.println(menuView.getUserInMenu().getUser_id());
         eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
         menuView.addItem(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
         eventRepository.saveEvent(new Task(date,title.getText(),description.getText(),(String) category.getSelectionModel().getSelectedItem()));

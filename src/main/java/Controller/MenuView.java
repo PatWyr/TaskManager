@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Getter;
 import java.io.IOException;
@@ -48,6 +49,8 @@ public class MenuView {
     private Button meeting;
     @FXML
     private ListView listView;
+    @FXML
+    private Text name;
 
     private final ObservableList<String> items = FXCollections.observableArrayList();
     private final EventManager eventManager = EventManager.getInstance();
@@ -63,6 +66,8 @@ public class MenuView {
         listView.setItems(items);
         //emailSender.start();
         userInMenu = loginView.getUser();
+        System.out.println(userInMenu.getUser_id());
+        name.setText(userInMenu.getName());
     }
 
     @FXML
