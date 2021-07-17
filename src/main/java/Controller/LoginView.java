@@ -75,6 +75,7 @@ public class LoginView {
             });
             Parent root = loader.load();
             Scene scene = new Scene(root, 800, 800);
+            scene.getStylesheets().add(getClass().getClassLoader().getResource("MenuCSS.css").toExternalForm());
             stage.setTitle("Menu");
             stage.setScene(scene);
             stage.show();

@@ -1,0 +1,21 @@
+.button {
+    -fx-padding: 0.75em 2em;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-color: #2194E0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-display: inline-block;
+    -fx-border-radius: 0.3em;
+    -fx-transition: all 0.2s ease-in-out;
+    -fx-position: relative;
+    -fx-overflow: hidden;
+}
+
+.menu-bar {
+
+}
+
+.menu-item {
+
+}

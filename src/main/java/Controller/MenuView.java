@@ -11,28 +11,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import lombok.Getter;
+
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Objects;
 
 @Getter
 public class MenuView {
 
 
-   public MenuView() throws IOException {
-
-    }
-    public MenuView(LoginView loginView) throws IOException {
-    this.loginView = loginView;
-    }
-
     private final Stage stage = new Stage();
-
+    private final ObservableList<String> items = FXCollections.observableArrayList();
+    private final EventManager eventManager = EventManager.getInstance();
+    private final EmailSender emailSender = new EmailSender();
     @FXML
     private Button task;
     @FXML
@@ -51,15 +45,14 @@ public class MenuView {
     private ListView listView;
     @FXML
     private Text name;
-
-    private final ObservableList<String> items = FXCollections.observableArrayList();
-    private final EventManager eventManager = EventManager.getInstance();
-    private final EmailSender emailSender = new EmailSender();
     private LoginView loginView;
     private User userInMenu;
+    public MenuView() throws IOException {
 
-
-
+    }
+    public MenuView(LoginView loginView) throws IOException {
+        this.loginView = loginView;
+    }
 
     @FXML
     public void initialize() throws IOException {
@@ -140,8 +133,6 @@ public class MenuView {
         stage.setResizable(false);
         stage.show();
     }
-
-
 
 
 }

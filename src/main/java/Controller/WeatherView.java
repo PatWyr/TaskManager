@@ -21,7 +21,7 @@ public class WeatherView {
     @FXML
     Text temperatureMin;
 
-    private Weather weather = new Weather();
+    private final Weather weather = new Weather();
 
     @FXML
     public void initialize() throws IOException {
