@@ -119,7 +119,7 @@ public class MenuView {
     public void weatherOpen() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("WeatherView.fxml")));
         Scene scene = new Scene(root, 600, 600);
-       // scene.getStylesheets().add(getClass().getClassLoader().getResource("CalculatorCSS.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("WeatherCSS.css").toExternalForm());
         stage.setTitle("Weather");
         stage.setScene(scene);
         stage.setResizable(false);
