@@ -20,6 +20,7 @@ public class main extends Application {
         scene.getStylesheets().add(getClass().getClassLoader().getResource("LoginCSS.css").toExternalForm());
         stage.setTitle("Login");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 }

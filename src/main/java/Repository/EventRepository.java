@@ -1,9 +1,11 @@
 package Repository;
 
+import java.util.List;
+
 public interface EventRepository<T> {
 
     void saveEvent(T obj);
     void deleteEvent();
-    T findEvent();
+    List<T> findEvent(int id);
 
 }

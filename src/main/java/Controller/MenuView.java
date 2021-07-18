@@ -127,8 +127,23 @@ public class MenuView {
         });
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 600);
-        //scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
         stage.setTitle("Add Meeting");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    @FXML
+    public void deleteEvent() throws IOException {
+        FXMLLoader loader = new FXMLLoader((Objects.requireNonNull(getClass().getClassLoader().getResource("DeleteView.fxml"))));
+        loader.setControllerFactory(c -> {
+            return new DeleteView(this);
+        });
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 600, 600);
+        //scene.getStylesheets().add(getClass().getClassLoader().getResource("TaskCSS.css").toExternalForm());
+        stage.setTitle("Delete");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

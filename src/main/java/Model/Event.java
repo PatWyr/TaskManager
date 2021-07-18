@@ -9,7 +9,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
 @Table(name = "Events")
 @DiscriminatorColumn(name = "discriminator")
@@ -24,12 +24,12 @@ public class Event {
     protected String title;
     @Column(name = "description")
     protected String description;
-    @Transient
     protected int user_id;
 
-    public Event(Date date, String title, String description) {
+    public Event(Date date, String title, String description,int user_id) {
         this.date = date;
         this.title = title;
         this.description = description;
+        this.user_id = user_id;
     }
 }

@@ -1,6 +1,6 @@
 package Controller;
+
 import Model.DAO;
-import Model.Event;
 import Model.EventManager;
 import Model.Task;
 import Repository.HibernateEventRepository;
@@ -23,7 +23,8 @@ public class TaskView {
 
     private final Logger log = Logger.getLogger(getClass().getName());
     private final HibernateEventRepository eventRepository = new HibernateEventRepository();
-
+    private final MenuView menuView;
+    private final DAO dao = DAO.getInstance();
     @FXML
     TextArea description;
     @FXML
@@ -36,9 +37,6 @@ public class TaskView {
     Button add;
     EventManager eventManager = EventManager.getInstance();
 
-    private final MenuView menuView;
-    private final DAO dao = DAO.getInstance();
-
     public TaskView(MenuView menuView) throws SQLException {
         this.menuView = menuView;
     }
@@ -49,14 +47,13 @@ public class TaskView {
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
         System.out.println(menuView.getUserInMenu().getUser_id());
-        eventManager.addEvent(new Task(date,title.getText(),description.getText(), (String) category.getSelectionModel().getSelectedItem()));
-        menuView.addItem(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
-        eventRepository.saveEvent(new Task(date,title.getText(),description.getText(),(String) category.getSelectionModel().getSelectedItem()));
+        eventManager.addEvent(new Task(date, title.getText(), description.getText(), (String) category.getSelectionModel().getSelectedItem(), menuView.getUserInMenu().getUser_id()));
+        menuView.addItem(title.getText(), description.getText(), date.toString(), (String) category.getSelectionModel().getSelectedItem());
+        eventRepository.saveEvent(new Task(date, title.getText(), description.getText(), (String) category.getSelectionModel().getSelectedItem(), menuView.getUserInMenu().getUser_id()));
         //dao.addTask(title.getText(),description.getText(),date.toString(),(String) category.getSelectionModel().getSelectedItem());
-        log.log(Level.INFO,"Task added");
+        log.log(Level.INFO, "Task added");
         add.getScene().getWindow().hide();
     }
-
 
 
 }

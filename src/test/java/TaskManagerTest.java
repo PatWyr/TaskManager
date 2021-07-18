@@ -9,13 +9,13 @@ public class TaskManagerTest {
 
     @Test
     public void createTask() {
-        eventManager.addEvent(new Task(null,"Test","Test","Test"));
+        eventManager.addEvent(new Task(null,"Test","Test","Test",0));
         assertEquals(eventManager.getEventList().size(),1);
         for(int i = 0;i < 10;i++) {
-            eventManager.addEvent(new Task(null,"Test","Test","Test"));
+            eventManager.addEvent(new Task(null,"Test","Test","Test",0));
         }
         assertEquals(eventManager.getEventList().size(),11);
-        Task test = new Task(null,"Test","Test","Test");
+        Task test = new Task(null,"Test","Test","Test",0);
         eventManager.addEvent(test);
         assertEquals(eventManager.getEventList().size(),12);
         eventManager.deleteEvent(test);

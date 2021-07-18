@@ -16,8 +16,8 @@ public class Task extends Event {
 
 private String category;
 
-    public Task(Date date, String title, String description, String category) {
-        super(date, title, description);
+    public Task(Date date, String title, String description, String category,int user_id) {
+        super(date, title, description,user_id);
         this.category = category;
     }
 
