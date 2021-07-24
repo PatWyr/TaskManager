@@ -6,7 +6,6 @@ import java.util.Date;
 @EqualsAndHashCode
 @Setter
 @Getter
-@ToString
 @NoArgsConstructor
 
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -31,5 +30,16 @@ public class Event {
         this.title = title;
         this.description = description;
         this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "event_id=" + event_id +
+                ", date=" + date +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", user_id=" + user_id +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package Controller;
 
+import Repository.HibernateEventRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -18,6 +19,8 @@ public class DeleteView {
     public DeleteView(MenuView menuView) {
         this.menuView = menuView;
     }
+    private HibernateEventRepository eventRepository = new HibernateEventRepository();
+
 
     @FXML
     public void initialize() {

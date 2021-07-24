@@ -33,4 +33,6 @@ public class HibernateEventRepository implements EventRepository<Event> {
         session.close();
         return eventList;
     }
+
+
 }

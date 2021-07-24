@@ -1,10 +1,14 @@
 package Controller;
 
 import Model.EmailSender;
+import Model.Event;
 import Model.EventManager;
 import Model.User;
+import Repository.EventRepository;
+import Repository.HibernateEventRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +21,8 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -24,9 +30,10 @@ public class MenuView {
 
 
     private final Stage stage = new Stage();
-    private final ObservableList<String> items = FXCollections.observableArrayList();
+    private ObservableList<String> items = FXCollections.observableArrayList();
     private final EventManager eventManager = EventManager.getInstance();
     private final EmailSender emailSender = new EmailSender();
+    private final HibernateEventRepository eventRepository = new HibernateEventRepository();
     @FXML
     private Button task;
     @FXML
@@ -54,12 +61,27 @@ public class MenuView {
         this.loginView = loginView;
     }
 
+    public ObservableList convert() {
+        final EventRepository repository = new HibernateEventRepository();
+        List<Event> eventList = repository.findEvent(userInMenu.getUser_id());
+        ObservableList<String> convert = FXCollections.observableArrayList();
+        String newEvent = "";
+        for (Event event : eventList) {
+            newEvent = event.getTitle() + " " + event.getDescription() + " "  +
+                    event.getDate() + " ";
+            convert.add(newEvent);
+            newEvent = "";
+        }
+        return convert;
+    }
+
+
     @FXML
     public void initialize() throws IOException {
+        userInMenu = loginView.getUser();
+        items = convert();
         listView.setItems(items);
         //emailSender.start();
-        userInMenu = loginView.getUser();
-        System.out.println(userInMenu.getUser_id());
         name.setText(userInMenu.getName());
     }
 
